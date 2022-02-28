@@ -16,4 +16,5 @@
 .env
 .vscode/
 .DS_Store
-The-Art-Of-Mac-Malware-CN/origin
+tools.py
+Writing-An-Interpreter-In-GO/outs/
