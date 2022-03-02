@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>JSONP DEMO</title>
+</head>
+
+<body>
+    <div>
+        hi...
+        <textarea id="text">
+
+        </textarea>
+        <div id="here">
+        </div>
+    </div>
+    <button id="btn">jquery-Test1</button>
+    <button id="btn2">jquery-Test2</button>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url: "http://localhost:8081/jsonp",
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    success: function (response) {
+                        $("#text").html(JSON.stringify(response));
+                    }
+                });
+            });
+            $("#btn2").click(function () {
+                $.ajax({
+                    url: "http://localhost:8081/jsonp?callback=alert(23)",
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    success: function (response) {
+                        $("#text").html(JSON.stringify(response));
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function test(data) {
+            console.log(data);
+        }
+    </script>
+    <script src="http://localhost:8081/jsonp?callback=test"></script>
+    <script src="http://localhost:8081/jsonp_json?callback=test"></script>
+    <script src="http://localhost:8081/jsonp_html?callback=test"></script>
+    <!-- test -->
+    <script src="http://localhost:8081/jsonp?callback=alert(2333),test"></script>
+</body>
+
+</html>
