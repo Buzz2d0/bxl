@@ -18,3 +18,5 @@
 .DS_Store
 tools.py
 Writing-An-Interpreter-In-GO/outs/
+
+build/
